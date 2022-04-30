@@ -1,4 +1,4 @@
-# quizSdaProjectPlus
+# Project Plus at the SDA, Quiz Application
 ***Finished*** 
 
 Screenshot of the main page:
