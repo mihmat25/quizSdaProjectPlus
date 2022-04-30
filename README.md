@@ -6,7 +6,7 @@ Screenshot of the main page:
 
 
 This is a quiz app that I developed with the help of a step-by-step tutorial provided by the Software Development Academy.
-The technologies I used: Java, Spring Boot, JDBC, Hybernate, Thymeleaf, Bootstrap, HTML, CSS, JavaScript and H2 Database.
+The technologies I used: Java, Spring Framework, Spring Boot, Maven, Thymeleaf, Bootstrap, HTML, CSS, JavaScript and H2 Database Engine.
 
 If you clone this app you just have to start it. The default JPA setting creates a database schema from scratch each time the application is started.
 Then acces the http://localhost:8080/ :)
