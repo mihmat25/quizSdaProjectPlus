@@ -8,9 +8,11 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 import sdacademy.projectplus.quizSdaProjectPlus.dto.CategoriesDto;
 import sdacademy.projectplus.quizSdaProjectPlus.dto.QuestionsDto;
+import sdacademy.projectplus.quizSdaProjectPlus.frontend.GameOptions;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @Log
@@ -24,17 +26,18 @@ public class QuizDataService {
         return result.getTrivia_categories();
     }
 
-    public void getQuizQuestions(){
+    public List<QuestionsDto.QuestionDto> getQuizQuestions(GameOptions gameOptions) {
         RestTemplate restTemplate = new RestTemplate();
 
         URI uri = UriComponentsBuilder.fromHttpUrl("https://opentdb.com/api.php")
-                .queryParam("amount", 2)
-                .queryParam("category", 25)
-                .queryParam("difficulty", "medium")
+                .queryParam("amount", gameOptions.getNumberOfQuestions())
+                .queryParam("category", gameOptions.getCategoryId())
+                .queryParam("difficulty", gameOptions.getDifficulty().name().toLowerCase())
                 .build().toUri();
         log.info("Quiz question retrieve URL: " + uri);
 
         QuestionsDto result = restTemplate.getForObject(uri, QuestionsDto.class);
-        log.info("Quiz questions:" + result.getResults());
+        log.info("Quiz questions: " + result.getResults());
+        return result.getResults();
     }
 }
